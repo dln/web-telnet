@@ -10,6 +10,7 @@ RUN apk add -U python py2-numpy py2-pip
 COPY --from=build /app/index.html /app/hterm_all.js /app/
 COPY --from=build /app/websockify /app/websockify
 
+ENV HTTP_PORT 8000
 ENV TELNET_SERVER localhost:23
 
-CMD /app/websockify/run -v --web=/app :8000 ${TELNET_SERVER}
+CMD /app/websockify/run -v --web=/app :${HTTP_PORT} ${TELNET_SERVER}
