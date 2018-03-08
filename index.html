@@ -12,7 +12,7 @@
             t.decorate(document.getElementById("terminal"));
             t.installKeyboard();
             
-            var ws = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host);
+            var ws = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host + window.location.pathname);
             ws.binaryType = "arraybuffer";
             var td = new TextDecoder;
             ws.onmessage = function(m) {
